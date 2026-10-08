@@ -1,0 +1,27 @@
+[
+  {
+    "source": "cnn_lstm_method.md",
+    "chunk_id": 0,
+    "text": "# CNN-LSTM Method A convolutional neural network (CNN) extracts spatial representations from images. ResNet50 is a residual CNN that can be initialized with ImageNet weights and fine-tuned for a target classification task. An LSTM is designed for sequential data. In video deepfake detection, CNN features from consecutive frames can be provided to an LSTM so it can learn temporal relationships. For an image-only CNN-LSTM experiment, an image can be divided into multiple spatial regions. The CNN extracts one feature vector for each region, and the LSTM processes the ordered region sequence. This is more meaningful than reshaping a single feature vector into a one-timestep sequence."
+  },
+  {
+    "source": "deepfake_basics.md",
+    "chunk_id": 0,
+    "text": "# Deepfake Basics Deepfakes are synthetic or manipulated media produced or altered using machine learning methods. Common categories include face swapping, facial reenactment, expression manipulation, and fully synthetic faces. A detector is a statistical classifier and should not be treated as absolute proof of authenticity. Performance can change with the image source, compression, camera pipeline, generation method, post-processing, and distribution shift. Possible visual indicators discussed in deepfake detection include blending inconsistencies, unusual facial texture, boundary artifacts, and local detail inconsistencies. These cues are not universal and may disappear after compression or improved synthesis."
+  },
+  {
+    "source": "evaluation.md",
+    "chunk_id": 0,
+    "text": "# Evaluation Recommended metrics include accuracy, precision, recall, F1-score, ROC-AUC, and a confusion matrix. Use an independent test set when claiming generalization. A detector can learn dataset-specific shortcuts. Report class counts, train/validation/test methodology, random seed, image size, optimizer, learning rate, batch size, epochs, early stopping, and hardware. A high confidence score is not equivalent to certainty. The detector may fail on unseen manipulation methods, new generators, heavy compression, resizing, crops, or distribution shifts."
+  },
+  {
+    "source": "limitations.md",
+    "chunk_id": 0,
+    "text": "# Limitations and Responsible Use Deepfake detection is an evolving problem. A detector trained on one dataset may not generalize to new datasets or future synthesis methods. Predictions should be presented as model probabilities or scores, not definitive proof. Human review and provenance evidence may be required for high-stakes use. RAG does not automatically improve the classifier's accuracy. Its main role in this project is to retrieve documented knowledge and improve explanation. Classifier evaluation must therefore be measured independently from the RAG component."
+  },
+  {
+    "source": "rag_architecture.md",
+    "chunk_id": 0,
+    "text": "# RAG Architecture Retrieval-Augmented Generation (RAG) separates knowledge retrieval from the classifier. The classifier first produces a prediction and probabilities. A retriever searches a curated knowledge base for relevant passages. A language model can then generate a grounded explanation using those retrieved passages. The RAG layer should not override the classifier. It should explain the result, provide documented background information, and communicate limitations. A typical pipeline is: classifier -> query construction -> embedding model -> vector database -> top-k evidence -> language model -> explanation. FAISS can be used for local vector similarity search. Sentence-transformers can generate dense embeddings. The knowledge base should contain trusted research papers, project documentation, evaluation notes, and model limitations."
+  }
+]
